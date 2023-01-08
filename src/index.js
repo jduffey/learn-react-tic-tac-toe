@@ -20,8 +20,10 @@ class Board extends React.Component {
     }
 
     handleClick(i) {
-        if (this.state.squares[i] !== null) return;
         const squares = this.state.squares.slice(); // Make a copy of the data instead of mutating it
+
+        if (calculateWinner(squares) || squares[i]) return;
+
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             squares: squares,
@@ -39,11 +41,19 @@ class Board extends React.Component {
     }
 
     render() {
-        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        const winner = calculateWinner(this.state.squares);
+        let status;
+        if (winner) {
+            status = 'Winner: ' + winner;
+        } else {
+            status = 'Next player ' + (this.state.xIsNext ? 'X' : 'O');
+        }
 
         return (
             <div>
-                <div className="status">{status}</div>
+                <div className="status">
+                    {status}
+                </div>
                 <div className="board-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -78,6 +88,26 @@ class Game extends React.Component {
             </div>
         );
     }
+}
+
+function calculateWinner(squares) {
+    const winningConfigurations = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    for (let i = 0; i < winningConfigurations.length; i++) {
+        const [a, b, c] = winningConfigurations[i];
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            return squares[a];
+        }
+    }
+    return null;
 }
 
 // ========================================
