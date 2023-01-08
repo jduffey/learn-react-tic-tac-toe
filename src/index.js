@@ -20,6 +20,7 @@ class Board extends React.Component {
     }
 
     handleClick(i) {
+        if (this.state.squares[i] !== null) return;
         const squares = this.state.squares.slice(); // Make a copy of the data instead of mutating it
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
