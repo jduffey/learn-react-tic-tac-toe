@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Square given isWinningSquare is false, sets background color to inherit 1`] = `
+<button
+  className="square"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "inherit",
+    }
+  }
+>
+  bar
+</button>
+`;
+
+exports[`Square given isWinningSquare is true, sets background color to lightgreen 1`] = `
+<button
+  className="square"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "lightgreen",
+    }
+  }
+>
+  bar
+</button>
+`;
