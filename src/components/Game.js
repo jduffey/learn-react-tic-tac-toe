@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Board } from "./Board";
+import { GameInfo } from './GameInfo';
 import { calculateWinner } from '../utils/calculateWinner';
 
 const [playerOneMark, playerTwoMark] = ['X', 'O'];
@@ -90,8 +91,10 @@ export class Game extends React.Component {
                     />
                 </div>
                 <div className="game-info">
-                    <div className="status-message">{statusMessage}</div>
-                    <ol style={{ listStyleType: "none" }}>{moves}</ol>
+                    <GameInfo
+                        statusMessage={statusMessage}
+                        buttons={moves}
+                    />
                 </div>
             </div>
         );
