@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 function Square(props) {
+    console.log(props);
+    const bgColor = props.highlight ? "lightgreen" : "inherit";
     return (
-        <button className='square' onClick={props.onClick}>
+        <button
+            style={{ backgroundColor: bgColor }}
+            className='square'
+            onClick={props.onClick}
+        >
             {props.value}
         </button>
     );
@@ -12,10 +18,12 @@ function Square(props) {
 
 class Board extends React.Component {
     renderSquare(i) {
+        console.log(this.props);
         return (
             <Square
                 value={this.props.squares[i]}
                 onClick={() => this.props.onClick(i)}
+                highlight={this.props.winningSquares?.includes(i)}
             />
         );
     }
@@ -60,7 +68,7 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice(); // Make a copy of the data instead of mutating it
 
-        if (calculateWinner(squares) || squares[i]) {
+        if (calculateWinner(squares).winner || squares[i]) {
             return;
         }
 
@@ -84,9 +92,9 @@ class Game extends React.Component {
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
-        const winner = calculateWinner(current.squares);
+        const winningData = calculateWinner(current.squares);
 
-        const moves = history.map((step, move) => {
+        const moves = history.map((_, move) => {
             const desc = move ?
                 'Go to move #' + move :
                 'Go to game start';
@@ -100,8 +108,8 @@ class Game extends React.Component {
         })
 
         let status;
-        if (winner) {
-            status = 'Winner: ' + winner;
+        if (winningData?.winner) {
+            status = 'Winner: ' + winningData.winner;
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
@@ -112,6 +120,7 @@ class Game extends React.Component {
                     <Board
                         squares={current.squares}
                         onClick={(i) => this.handleClick(i)}
+                        winningSquares={winningData?.winningSquares}
                     />
                 </div>
                 <div className="game-info">
@@ -137,10 +146,16 @@ function calculateWinner(squares) {
     for (let i = 0; i < winningConfigurations.length; i++) {
         const [a, b, c] = winningConfigurations[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return {
+                winner: squares[a],
+                winningSquares: [a, b, c],
+            };
         }
     }
-    return null;
+    return {
+        winner: null,
+        winningSquares: null,
+    };
 }
 
 // ========================================
