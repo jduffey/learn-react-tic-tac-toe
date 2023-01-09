@@ -16,6 +16,7 @@ export class Game extends React.Component {
             isPlayerOneNext: true,
             hasGameBeenWon: false,
             winningMark: null,
+            isGameADraw: false,
         };
     }
 
@@ -42,6 +43,11 @@ export class Game extends React.Component {
             this.setState({
                 hasGameBeenWon: true,
                 winningMark: winner,
+            });
+        }
+        if (this.state.history.length === 9 && !winner) {
+            this.setState({
+                isGameADraw: true,
             });
         }
     }
@@ -72,9 +78,14 @@ export class Game extends React.Component {
             );
         });
 
-        const status = this.state.hasGameBeenWon ?
-            'Winner: ' + this.state.winningMark :
-            'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
+        let status;
+        if (this.state.isGameADraw) {
+            status = "Draw"
+        } else if (this.state.hasGameBeenWon) {
+            status = 'Winner: ' + this.state.winningMark;
+        } else {
+            status = 'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
+        }
 
         return (
             <div className="game">
