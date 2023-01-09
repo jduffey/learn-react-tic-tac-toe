@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+const [playerOneMark, playerTwoMark] = ['X', 'O'];
+
 function Square(props) {
-    console.log(props);
     const bgColor = props.highlight ? "lightgreen" : "inherit";
     return (
         <button
@@ -18,7 +19,6 @@ function Square(props) {
 
 class Board extends React.Component {
     renderSquare(i) {
-        console.log(this.props);
         return (
             <Square
                 value={this.props.squares[i]}
@@ -59,7 +59,7 @@ class Game extends React.Component {
                 squares: Array(9).fill(null),
             }],
             stepNumber: 0,
-            xIsNext: true,
+            isPlayerOneNext: true,
         };
     }
 
@@ -72,20 +72,20 @@ class Game extends React.Component {
             return;
         }
 
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        squares[i] = this.state.isPlayerOneNext ? playerOneMark : playerTwoMark;
         this.setState({
             history: history.concat([{
                 squares: squares,
             }]),
             stepNumber: history.length,
-            xIsNext: !this.state.xIsNext,
+            isPlayerOneNext: !this.state.isPlayerOneNext,
         });
     }
 
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            xIsNext: (step % 2) === 0,
+            isPlayerOneNext: (step % 2) === 0,
         });
     }
 
@@ -111,7 +111,7 @@ class Game extends React.Component {
         if (winningData?.winner) {
             status = 'Winner: ' + winningData.winner;
         } else {
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+            status = 'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
         }
 
         return (
