@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board renders 1`] = `
+<div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      a
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      b
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      c
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      a
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      e
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      f
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      a
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      h
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      i
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Board renders if winningSquares is null 1`] = `
+<div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      a
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      b
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      c
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      d
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      e
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      f
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      g
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      h
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "inherit",
+        }
+      }
+    >
+      i
+    </button>
+  </div>
+</div>
+`;
