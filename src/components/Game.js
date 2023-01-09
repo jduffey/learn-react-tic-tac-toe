@@ -14,6 +14,8 @@ export class Game extends React.Component {
             }],
             stepNumber: 0,
             isPlayerOneNext: true,
+            hasGameBeenWon: false,
+            winningMark: null,
         };
     }
 
@@ -22,7 +24,7 @@ export class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice(); // Make a copy of the data instead of mutating it
 
-        if (calculateWinner(squares).winner || squares[i]) {
+        if (this.state.hasGameBeenWon || squares[i]) {
             return;
         }
 
@@ -34,12 +36,19 @@ export class Game extends React.Component {
             stepNumber: history.length,
             isPlayerOneNext: !this.state.isPlayerOneNext,
         });
+
+        const winner = calculateWinner(squares).winner;
+        if (winner) {
+            this.setState({
+                hasGameBeenWon: true,
+                winningMark: winner,
+            });
+        }
     }
 
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            isPlayerOneNext: (step % 2) === 0,
         });
     }
 
@@ -51,19 +60,20 @@ export class Game extends React.Component {
         const moves = history.map((_, move) => {
             if (move === 0) return null;
 
-            const desc = 'Go to move #' + move;
+            const playerMark = move % 2 !== 0 ? playerOneMark : playerTwoMark
+            const desc = `Move #${move} - ${playerMark}`;
 
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>
+                    <button className='historical-move-button' onClick={() => this.jumpTo(move)}>
                         {desc}
                     </button>
                 </li>
             );
         });
 
-        const status = winningData?.winner ?
-            'Winner: ' + winningData.winner :
+        const status = this.state.hasGameBeenWon ?
+            'Winner: ' + this.state.winningMark :
             'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
 
         return (
@@ -77,7 +87,7 @@ export class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div className="status">{status}</div>
-                    <ol>{moves}</ol>
+                    <ol style={{ listStyleType: "none" }}>{moves}</ol>
                 </div>
             </div>
         );

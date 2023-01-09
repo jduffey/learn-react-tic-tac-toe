@@ -5,7 +5,9 @@ body {
 
 ol,
 ul {
-    padding-left: 30px;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
 }
 
 .board-row:after {
@@ -19,6 +21,7 @@ ul {
 }
 
 .square {
+    font-family: inherit;
     background: #fff;
     border: 2px solid black;
     float: left;
@@ -47,10 +50,14 @@ ul {
 }
 
 .game-info {
+    width: 180px;
+    text-align: center;
     margin-left: 20px;
 }
 
-button {
+.historical-move-button {
+    text-align: left;
     font-size: 16px;
     font-family: inherit;
+    width: 110px;
 }
