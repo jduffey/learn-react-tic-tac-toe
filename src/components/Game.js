@@ -78,14 +78,7 @@ export class Game extends React.Component {
             );
         });
 
-        let status;
-        if (this.state.isGameADraw) {
-            status = "Draw"
-        } else if (this.state.hasGameBeenWon) {
-            status = 'Winner: ' + this.state.winningMark;
-        } else {
-            status = 'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
-        }
+        const statusMessage = getStatusMessage(this.state);
 
         return (
             <div className="game">
@@ -97,10 +90,19 @@ export class Game extends React.Component {
                     />
                 </div>
                 <div className="game-info">
-                    <div className="status">{status}</div>
+                    <div className="status-message">{statusMessage}</div>
                     <ol style={{ listStyleType: "none" }}>{moves}</ol>
                 </div>
             </div>
         );
     }
+}
+
+function getStatusMessage(props) {
+    if (props.isGameADraw) {
+        return "Draw";
+    } else if (props.hasGameBeenWon) {
+        return 'Winner: ' + props.winningMark;
+    }
+    return 'Next player: ' + (props.isPlayerOneNext ? playerOneMark : playerTwoMark);
 }
