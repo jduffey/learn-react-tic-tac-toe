@@ -5,6 +5,7 @@ import { GameInfo } from './GameInfo';
 import { calculateWinner } from '../utils/calculateWinner';
 
 const [playerOneMark, playerTwoMark] = ['X', 'O'];
+const MAXIMUM_MOVES = 9;
 
 export class Game extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export class Game extends React.Component {
                 winningMark: winner,
             });
         }
-        if (this.state.history.length === 9 && !winner) {
+        if (this.state.history.length === MAXIMUM_MOVES && !winner) {
             this.setState({
                 isGameADraw: true,
             });
@@ -72,7 +73,10 @@ export class Game extends React.Component {
 
             return (
                 <li key={move}>
-                    <button className='historical-move-button' onClick={() => this.jumpTo(move)}>
+                    <button
+                        className="historical-move-button"
+                        onClick={() => this.jumpTo(move)}
+                    >
                         {desc}
                     </button>
                 </li>
