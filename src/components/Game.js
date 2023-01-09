@@ -59,14 +59,11 @@ export class Game extends React.Component {
                     </button>
                 </li>
             );
-        })
+        });
 
-        let status;
-        if (winningData?.winner) {
-            status = 'Winner: ' + winningData.winner;
-        } else {
-            status = 'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
-        }
+        const status = winningData?.winner ?
+            'Winner: ' + winningData.winner :
+            'Next player: ' + (this.state.isPlayerOneNext ? playerOneMark : playerTwoMark);
 
         return (
             <div className="game">
