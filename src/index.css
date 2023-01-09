@@ -15,10 +15,6 @@ ul {
 
 .status {
     font: 24px "Century Gothic", Futura, sans-serif;
-    height: 48px;
-    border: 2px solid black;
-    text-align: center;
-    line-height: 48px;
 }
 
 .square {
