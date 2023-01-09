@@ -6,9 +6,9 @@ export class Board extends React.Component {
     renderSquare(i) {
         return (
             <Square
-                value={this.props.squares[i]}
                 onClick={() => this.props.onClick(i)}
-                highlight={this.props.winningSquares?.includes(i)}
+                playerMark={this.props.squares[i]}
+                isWinningSquare={this.props.winningSquares?.includes(i)}
             />
         );
     }

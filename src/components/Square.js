@@ -1,12 +1,12 @@
 export function Square(props) {
-    const bgColor = props.highlight ? "lightgreen" : "inherit";
+    const bgColor = props.isWinningSquare ? "lightgreen" : "inherit";
     return (
         <button
             style={{ backgroundColor: bgColor }}
             className='square'
             onClick={props.onClick}
         >
-            {props.value}
+            {props.playerMark}
         </button>
     );
 }
