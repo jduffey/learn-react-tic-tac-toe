@@ -2,20 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-const [playerOneMark, playerTwoMark] = ['X', 'O'];
+import { Square } from "./components/Square";
 
-function Square(props) {
-    const bgColor = props.highlight ? "lightgreen" : "inherit";
-    return (
-        <button
-            style={{ backgroundColor: bgColor }}
-            className='square'
-            onClick={props.onClick}
-        >
-            {props.value}
-        </button>
-    );
-}
+const [playerOneMark, playerTwoMark] = ['X', 'O'];
 
 class Board extends React.Component {
     renderSquare(i) {
