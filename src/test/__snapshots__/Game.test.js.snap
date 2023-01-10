@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game renders 1`] = `
+<div
+  className="game"
+>
+  <div
+    className="game-board"
+  >
+    <div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+        <button
+          className="square"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "inherit",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="game-info"
+  >
+    <div>
+      <div
+        className="status-message"
+      >
+        Next player: X
+      </div>
+      <ol />
+    </div>
+  </div>
+</div>
+`;
